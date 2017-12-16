@@ -37,3 +37,6 @@ pwd
 cd / *теперь мы находимся в над каталоге
 ././home/students/17200/kambalin/main1
 
+*4. Добавьте директорию, в которой лежит программа из п.3 в $PATH (export PATH=$PATH:<новая директория>). 
+PATH = $PATH: /home/students/17200/kambalin
+echo $PATH 

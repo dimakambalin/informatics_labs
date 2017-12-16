@@ -1,0 +1,14 @@
+*1. С помощью команд which и whereis выясните, в какой директории находятся программы cat, less, grep и find
+
+which выводит путь к команде
+whereis выводит путь к команде и её документации
+
+which cat
+whereis cat
+which less
+whereis less
+which find 
+whereis find
+
+*2. Выведите на экран значение переменной окружения $PATH (echo $PATH) и убедитесь, что директория, найденная в п.1 входит в $PATH
+echo $PATH

@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+typedef  struct node {
+	char *word;
+	struct node *left;
+	struct node *right;
+} tree;
+
+
+typedef struct stack {struct node *top;} Stack;
+ void print_tree (tree *t)
+{
+	if (!t) return;
+	print_tree(t->left);
+	printf ("%s\n", t->word);
+	print_tree(t->right);
+}
+
+
+void move (char str[], tree *prev)
+{
+tree *t;
+
+
+int flag=strcmp(str, prev->word); 
+    if (flag<0) 
+    {
+     if (prev->left==NULL)            
+     {
+      t = (tree*)malloc(sizeof(tree));
+      t ->word = str;
+      t -> left = NULL;
+      t -> right = NULL;
+      prev->left = t;
+     }
+      else
+      {
+       prev = prev->left;
+       move(str, prev);    
+      }
+    }
+    
+    else if (flag>0)
+    {
+     if (prev->right==NULL)
+     {
+      t = (tree*)malloc(sizeof(tree));
+      t -> word = str;
+      t -> left = NULL;
+      t -> right = NULL;      
+      prev->right = t;                      
+     }     
+           else
+           {
+            prev = prev->right;
+            move(str, prev);
+           }           
+    }            
+}
+
+
+int main(){
+char x[100], xx[100];    
+int i=0, t=0, flag = 0;
+tree *root, *prev, *q; 
+freopen("input.txt", "r", stdin);
+freopen("output.txt","w", stdout);
+
+   
+
+     scanf("%s", x);
+     root = (tree*)malloc(sizeof(tree));
+     root->word = x;
+     root->left = NULL;
+     root->right = NULL;
+     /*prev = root;*/
+     
+     while ( scanf("%s", xx) == 1 )
+     {                          
+      prev = root;
+      move(xx,prev);
+     }
+               
+    print_tree(root);        
+}
